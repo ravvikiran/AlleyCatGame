@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="432" height="432" viewBox="0 0 432 432">
+  <!-- Adaptive icon foreground - cat only, centered in safe zone -->
+  <g transform="translate(108, 108) scale(1.6875)">
+    <!-- Cat body -->
+    <ellipse cx="64" cy="80" rx="28" ry="32" fill="#00cccc"/>
+    <!-- Cat head -->
+    <circle cx="64" cy="45" r="22" fill="#00cccc"/>
+    <!-- Ears -->
+    <polygon points="48,28 42,10 56,24" fill="#00cccc"/>
+    <polygon points="80,28 86,10 72,24" fill="#00cccc"/>
+    <!-- Inner ears -->
+    <polygon points="49,27 45,15 55,25" fill="#008888"/>
+    <polygon points="79,27 83,15 73,25" fill="#008888"/>
+    <!-- Eyes -->
+    <circle cx="55" cy="42" r="5" fill="#ffffff"/>
+    <circle cx="73" cy="42" r="5" fill="#ffffff"/>
+    <circle cx="56" cy="43" r="2.5" fill="#000000"/>
+    <circle cx="74" cy="43" r="2.5" fill="#000000"/>
+    <!-- Nose -->
+    <polygon points="64,50 61,53 67,53" fill="#ff6699"/>
+    <!-- Tail -->
+    <path d="M 92 80 Q 105 60 95 45" fill="none" stroke="#00cccc" stroke-width="6" stroke-linecap="round"/>
+  </g>
+</svg>

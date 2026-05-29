@@ -1,0 +1,17 @@
+# Godot 4 specific ignores
+.godot/
+*.import
+
+# Android build artifacts
+android/build/
+*.apk
+*.aab
+
+# OS generated files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# IDE
+.vscode/
+*.swp

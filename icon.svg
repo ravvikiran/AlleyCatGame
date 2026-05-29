@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Background -->
+  <rect width="128" height="128" rx="16" fill="#0a0a1a"/>
+  <!-- Cat body -->
+  <ellipse cx="64" cy="80" rx="28" ry="32" fill="#00cccc"/>
+  <!-- Cat head -->
+  <circle cx="64" cy="45" r="22" fill="#00cccc"/>
+  <!-- Ears -->
+  <polygon points="48,28 42,10 56,24" fill="#00cccc"/>
+  <polygon points="80,28 86,10 72,24" fill="#00cccc"/>
+  <!-- Inner ears -->
+  <polygon points="49,27 45,15 55,25" fill="#008888"/>
+  <polygon points="79,27 83,15 73,25" fill="#008888"/>
+  <!-- Eyes -->
+  <circle cx="55" cy="42" r="5" fill="#ffffff"/>
+  <circle cx="73" cy="42" r="5" fill="#ffffff"/>
+  <circle cx="56" cy="43" r="2.5" fill="#000000"/>
+  <circle cx="74" cy="43" r="2.5" fill="#000000"/>
+  <!-- Nose -->
+  <polygon points="64,50 61,53 67,53" fill="#ff6699"/>
+  <!-- Whiskers -->
+  <line x1="40" y1="50" x2="55" y2="52" stroke="#00aaaa" stroke-width="1"/>
+  <line x1="40" y1="54" x2="55" y2="54" stroke="#00aaaa" stroke-width="1"/>
+  <line x1="88" y1="50" x2="73" y2="52" stroke="#00aaaa" stroke-width="1"/>
+  <line x1="88" y1="54" x2="73" y2="54" stroke="#00aaaa" stroke-width="1"/>
+  <!-- Tail -->
+  <path d="M 92 80 Q 105 60 95 45" fill="none" stroke="#00cccc" stroke-width="6" stroke-linecap="round"/>
+  <!-- Paws -->
+  <ellipse cx="50" cy="108" rx="8" ry="5" fill="#00aaaa"/>
+  <ellipse cx="78" cy="108" rx="8" ry="5" fill="#00aaaa"/>
+</svg>

@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://leaderboard_screen"]
+
+[ext_resource type="Script" path="res://scripts/scenes/leaderboard_screen.gd" id="1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_title"]
+font_size = 48
+font_color = Color(0, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_normal"]
+font_size = 24
+font_color = Color(1, 1, 1, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_toast"]
+font_size = 20
+font_color = Color(0.5, 1, 0.5, 1)
+
+[node name="LeaderboardScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.02, 0.02, 0.08, 1)
+
+[node name="Panel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TitleLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 600.0
+offset_bottom = 80.0
+text = "🏆 LEADERBOARD"
+label_settings = SubResource("LabelSettings_title")
+
+[node name="PlayerRankLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 800.0
+offset_bottom = 115.0
+text = "You: Player | Rank #1 | Best: 0 pts"
+label_settings = SubResource("LabelSettings_normal")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 130.0
+offset_right = 1900.0
+offset_bottom = 900.0
+
+[node name="EntriesContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ButtonsContainer" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 920.0
+offset_right = 1900.0
+offset_bottom = 980.0
+alignment = 1
+
+[node name="ShareButton" type="Button" parent="Panel/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 50)
+text = "📤 SHARE SCORE"
+
+[node name="Spacer1" type="Control" parent="Panel/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(40, 0)
+
+[node name="ExportButton" type="Button" parent="Panel/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 50)
+text = "📋 EXPORT ALL"
+
+[node name="Spacer2" type="Control" parent="Panel/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(40, 0)
+
+[node name="BackButton" type="Button" parent="Panel/ButtonsContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 50)
+text = "← BACK"
+
+[node name="ToastLabel" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 760.0
+offset_top = 990.0
+offset_right = 1160.0
+offset_bottom = 1020.0
+visible = false
+horizontal_alignment = 1
+text = "Score shared!"
+label_settings = SubResource("LabelSettings_toast")
