@@ -1,6 +1,18 @@
-# Alley Cat - Modern Android Remake
+# Midnight Prowl
 
-A modern Android remake of the classic 1984 DOS game "Alley Cat" by Bill Williams, built with Godot 4.x.
+**A stray cat's quest for love under the city lights.**
+
+A retro-modern 2D platformer for Android where you play as Freddy, a scrappy alley cat navigating rooftops, dodging hazards, and completing challenges to win the heart of Felicia. Inspired by classic 80s arcade platformers, reimagined with modern touch controls and vibrant pixel art.
+
+## Features
+
+- **Alleyway Hub** — Navigate a multi-level urban environment with trash cans, fences, clotheslines, and apartment windows
+- **5 Unique Minigames** — Cheese maze, spider evasion, stealth dogfood heist, underwater fishbowl, and birdcage escape
+- **Love Game Bonus Stage** — Platform across heart-shaped tiles to reach your sweetheart
+- **Progressive Difficulty** — Four tiers: Kitten → House Cat → Tomcat → Alley Cat
+- **Local Leaderboard** — Track scores with player names/emails, share via social media
+- **Touch Optimized** — Virtual joystick + dedicated jump/action buttons
+- **Retro-Modern Aesthetic** — CGA-inspired palette with smooth 60fps animations
 
 ## Requirements
 
@@ -8,89 +20,86 @@ A modern Android remake of the classic 1984 DOS game "Alley Cat" by Bill William
 - Android SDK (for mobile export)
 - Android export templates installed in Godot
 
-## Project Setup
+## Quick Start
 
 1. Open Godot Engine
-2. Click "Import" and navigate to this project folder
-3. Select `project.godot` and click "Import & Edit"
-
-## Running the Game
-
-- Press F5 in the Godot Editor to run the project
-- The game starts at the Title Screen
-- Touch/click anywhere to start
+2. Import this project (select `project.godot`)
+3. Press F5 to run
 
 ## Running Tests
 
-Run the integration test suite from the command line:
-
 ```bash
-# Run core logic tests
 godot --headless --script tests/test_runner.gd
-
-# Run game flow tests
 godot --headless --script tests/test_game_flow.gd
 ```
 
 ## Project Structure
 
 ```
-alley_cat/
-├── project.godot          # Godot project configuration
+midnight_prowl/
+├── project.godot          # Engine configuration
 ├── export_presets.cfg     # Android export settings
-├── scenes/                # Scene files (.tscn)
-│   ├── main.tscn
-│   ├── title_screen.tscn
-│   ├── alleyway_hub.tscn
-│   ├── love_game.tscn
-│   ├── game_over.tscn
-│   └── minigames/        # 5 minigame room scenes
-├── scripts/               # GDScript source files
+├── icon.svg               # App icon (cat on rooftop + moon)
+├── scenes/                # Godot scene files
+│   ├── main.tscn          # Entry point / loading
+│   ├── title_screen.tscn  # Title with leaderboard access
+│   ├── player_registration.tscn  # Name/email setup
+│   ├── leaderboard_screen.tscn   # Score rankings
+│   ├── alleyway_hub.tscn  # Main hub level
+│   ├── love_game.tscn     # Bonus stage
+│   ├── game_over.tscn     # End screen with share
+│   ├── minigames/         # 5 challenge rooms
+│   └── ui/                # Pause menu
+├── scripts/
 │   ├── autoloads/         # Singleton managers
-│   ├── player/            # Freddy + state machine
-│   ├── entities/          # Enemy AI scripts
+│   │   ├── game_manager.gd
+│   │   ├── difficulty_manager.gd
+│   │   ├── score_manager.gd
+│   │   ├── save_manager.gd
+│   │   ├── audio_manager.gd
+│   │   ├── leaderboard_manager.gd
+│   │   └── placeholder_assets.gd
+│   ├── player/            # Freddy controller + states
+│   ├── entities/          # Enemy AI (9 types)
 │   ├── rooms/             # Minigame logic
-│   ├── alleyway/          # Hub scene logic
+│   ├── alleyway/          # Hub mechanics
 │   ├── ui/                # Touch controls + HUD
-│   └── scenes/            # Scene-specific scripts
+│   └── scenes/            # Screen scripts
 ├── assets/                # Art, audio, fonts
-│   ├── sprites/
-│   ├── audio/
-│   └── fonts/
-└── tests/                 # Automated test scripts
+└── tests/                 # Automated test suite
 ```
 
-## Game Controls (Touch)
+## Controls
 
-| Control | Location | Action |
-|---------|----------|--------|
-| Virtual Joystick | Left side | Move horizontally, drop down |
-| Jump Button | Right (lower) | Jump (standing or running) |
-| Action Button | Right (upper) | Context action (teleport, drink, drop gift) |
+| Input | Location | Action |
+|-------|----------|--------|
+| Virtual Joystick | Left side | Move, drop down |
+| Jump Button | Right (lower) | Jump (standing/running) |
+| Action Button | Right (upper) | Context action |
 
-## Difficulty Tiers
+## Scoring & Leaderboard
 
-| Tier | Unlocked After |
-|------|---------------|
-| Kitten | Game start |
-| House Cat | 1st Love Game |
-| Tomcat | 2nd Love Game |
-| Alley Cat | 3rd Love Game |
+- Scores saved locally with player name + email as unique ID
+- Share scores via Android share intent (email, social media, messaging)
+- Export full leaderboard as text file
+- No internet or backend server required
 
 ## Building for Android
 
-1. Install Android export templates in Godot (Editor > Manage Export Templates)
+1. Install Android export templates (Editor > Manage Export Templates)
 2. Configure Android SDK path in Editor Settings
 3. Project > Export > Android > Export Project
-4. Sign the APK with your keystore for release builds
+4. Target: API 24+ (Android 7.0), ARM64 + ARMv7
 
-## Architecture
+## Difficulty Tiers
 
-The game uses 5 autoload singletons:
-- **GameManager** - State machine, lives, scene transitions
-- **DifficultyManager** - 4-tier difficulty scaling
-- **ScoreManager** - Points, bonuses, high score
-- **SaveManager** - JSON persistence
-- **AudioManager** - Music crossfading, SFX pool
+| Tier | Effect |
+|------|--------|
+| Kitten | Slow hazards, generous timing |
+| House Cat | Moderate speed increase |
+| Tomcat | Fast hazards, more enemies |
+| Alley Cat | Maximum challenge |
 
-Player movement uses a custom state machine (11 states) with hand-tuned physics for precise platforming feel.
+## License
+
+This is an original game. All code, assets, and design are new creations.

@@ -1,5 +1,5 @@
 extends SceneTree
-## TestRunner - Command-line test runner for Alley Cat.
+## TestRunner - Command-line test runner for Midnight Prowl.
 ## Run with: godot --headless --script tests/test_runner.gd
 
 var _tests_passed: int = 0
@@ -9,7 +9,7 @@ var _test_results: Array = []
 
 func _init() -> void:
 	print("\n========================================")
-	print("  ALLEY CAT - Integration Test Suite")
+	print("  MIDNIGHT PROWL - Integration Test Suite")
 	print("========================================\n")
 
 	_run_all_tests()

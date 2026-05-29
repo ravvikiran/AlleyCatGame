@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Alley Cat"
-config/description="Modern Android remake of the classic 1984 DOS game Alley Cat"
+config/name="Midnight Prowl"
+config/description="A stray cat's quest for love under the city lights. Navigate rooftops, dodge hazards, and win the heart of your feline sweetheart in this retro-modern platformer."
 run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"

@@ -124,7 +124,7 @@ func share_score(score: int, rank: int) -> void:
 		# Use Android share intent
 		var intent_args: Array = [
 			"--es", "android.intent.extra.TEXT", share_text,
-			"--es", "android.intent.extra.SUBJECT", "My Alley Cat Score!"
+			"--es", "android.intent.extra.SUBJECT", "My Midnight Prowl Score!"
 		]
 		# Godot 4 Android share via JavaClass
 		_android_share(share_text)
@@ -137,12 +137,12 @@ func share_score(score: int, rank: int) -> void:
 func export_leaderboard_to_file() -> String:
 	## Export the full leaderboard to a shareable text file.
 	## Returns the file path.
-	var export_path: String = "user://alleycat_leaderboard_export.txt"
+	var export_path: String = "user://midnight_prowl_leaderboard_export.txt"
 	var file := FileAccess.open(export_path, FileAccess.WRITE)
 	if not file:
 		return ""
 
-	file.store_line("=== ALLEY CAT LEADERBOARD ===")
+	file.store_line("=== MIDNIGHT PROWL LEADERBOARD ===")
 	file.store_line("Exported: %s" % _get_date_string())
 	file.store_line("Total Players: %d" % _leaderboard.size())
 	file.store_line("")
@@ -166,7 +166,7 @@ func export_leaderboard_to_file() -> String:
 func get_leaderboard_as_text() -> String:
 	## Returns the leaderboard formatted as shareable text.
 	var lines: PackedStringArray = PackedStringArray()
-	lines.append("🐱 ALLEY CAT LEADERBOARD 🐱")
+	lines.append("🐱 MIDNIGHT PROWL LEADERBOARD 🐱")
 	lines.append("")
 
 	var top: Array = get_top_scores(10)
@@ -186,18 +186,18 @@ func get_leaderboard_as_text() -> String:
 		])
 
 	lines.append("")
-	lines.append("Play Alley Cat and beat these scores!")
+	lines.append("Play Midnight Prowl and beat these scores!")
 	return "\n".join(lines)
 
 
 # --- Private Methods ---
 
 func _build_share_text(score: int, rank: int) -> String:
-	var text: String = "🐱 I scored %d points in Alley Cat! " % score
+	var text: String = "🐱 I scored %d points in Midnight Prowl! " % score
 	if rank > 0:
 		text += "Rank #%d on the local leaderboard. " % rank
 	text += "Difficulty: %s. " % DifficultyManager.get_tier_name()
-	text += "Can you beat my score? #AlleyCat #RetroGaming"
+	text += "Can you beat my score? #MidnightProwl #RetroGaming"
 	return text
 
 
@@ -206,7 +206,7 @@ func _android_share(text: String) -> void:
 	if Engine.has_singleton("GodotShare"):
 		# If a share plugin is installed
 		var share = Engine.get_singleton("GodotShare")
-		share.shareText("My Alley Cat Score!", "Share Score", text)
+		share.shareText("My Midnight Prowl Score!", "Share Score", text)
 	else:
 		# Fallback: try to open a mailto link
 		var encoded_text: String = text.uri_encode()

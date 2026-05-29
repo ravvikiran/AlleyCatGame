@@ -2,7 +2,7 @@ extends Node
 ## SaveManager - Local persistence using JSON (Autoload Singleton)
 ## Stores high scores, settings, and play statistics.
 
-const SAVE_PATH: String = "user://alleycat_save.json"
+const SAVE_PATH: String = "user://midnight_prowl_save.json"
 
 const DEFAULT_DATA: Dictionary = {
 	"high_score": 0,

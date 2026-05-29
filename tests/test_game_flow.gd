@@ -8,7 +8,7 @@ var _tests_failed: int = 0
 
 func _init() -> void:
 	print("\n========================================")
-	print("  ALLEY CAT - Game Flow Tests")
+	print("  MIDNIGHT PROWL - Game Flow Tests")
 	print("========================================\n")
 
 	_test_full_game_loop_state_sequence()

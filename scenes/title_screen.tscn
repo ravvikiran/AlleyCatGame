@@ -39,7 +39,7 @@ offset_right = 400.0
 offset_bottom = 240.0
 horizontal_alignment = 1
 vertical_alignment = 1
-text = "ALLEY CAT"
+text = "MIDNIGHT PROWL"
 label_settings = SubResource("LabelSettings_title")
 
 [node name="SubtitleLabel" type="Label" parent="."]
@@ -53,7 +53,7 @@ offset_right = 300.0
 offset_bottom = 280.0
 horizontal_alignment = 1
 vertical_alignment = 1
-text = "A Modern Remake"
+text = "A stray cat's quest for love"
 label_settings = SubResource("LabelSettings_normal")
 
 [node name="CatSprite" type="ColorRect" parent="."]
@@ -147,4 +147,4 @@ offset_right = 400.0
 offset_bottom = -15.0
 horizontal_alignment = 1
 vertical_alignment = 1
-text = "Original game by Bill Williams (1984)"
+text = "Inspired by classic 80s platformers"
