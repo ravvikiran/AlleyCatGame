@@ -40,14 +40,21 @@ func _on_play_pressed() -> void:
 		return
 
 	LeaderboardManager.register_player(player_name, email)
-	# Go back to title which will now start the game
-	GameManager.change_state(GameManager.GameState.TITLE_SCREEN)
+	_go_next()
 
 
 func _on_skip_pressed() -> void:
 	# Register as anonymous player
 	LeaderboardManager.register_player("Player_%d" % (randi() % 9999))
-	GameManager.change_state(GameManager.GameState.TITLE_SCREEN)
+	_go_next()
+
+
+func _go_next() -> void:
+	# If tutorial not completed, go to tutorial. Otherwise title screen.
+	if not SaveManager.get_setting("tutorial_completed"):
+		GameManager.change_state(GameManager.GameState.TUTORIAL)
+	else:
+		GameManager.change_state(GameManager.GameState.TITLE_SCREEN)
 
 
 func _show_error(message: String) -> void:

@@ -9,6 +9,7 @@ signal game_over()
 enum GameState {
 	TITLE_SCREEN,
 	PLAYER_REGISTRATION,
+	TUTORIAL,
 	LEADERBOARD,
 	ALLEYWAY_HUB,
 	MINIGAME_CHEESE,
@@ -23,6 +24,7 @@ enum GameState {
 const SCENE_MAP: Dictionary = {
 	GameState.TITLE_SCREEN: "res://scenes/title_screen.tscn",
 	GameState.PLAYER_REGISTRATION: "res://scenes/player_registration.tscn",
+	GameState.TUTORIAL: "res://scenes/tutorial.tscn",
 	GameState.LEADERBOARD: "res://scenes/leaderboard_screen.tscn",
 	GameState.ALLEYWAY_HUB: "res://scenes/alleyway_hub.tscn",
 	GameState.MINIGAME_CHEESE: "res://scenes/minigames/cheese_room.tscn",
