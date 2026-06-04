@@ -207,12 +207,10 @@ func _advance_step() -> void:
 		_complete_tutorial()
 		return
 
-	_current_step = next_step as TutorialStep
+	@warning_ignore("int_as_enum_without_cast")
+	_current_step = next_step
 
-	if _current_step == TutorialStep.COMPLETE:
-		_show_step(_current_step)
-	else:
-		_show_step(_current_step)
+	_show_step(_current_step)
 
 
 func _check_goal_completion(delta: float) -> void:
