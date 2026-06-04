@@ -46,6 +46,8 @@ var _invuln_timer: float = 0.0
 
 func _ready() -> void:
 	add_to_group("player")
+	# Replace ColorRect placeholder with proper visual if available
+	_upgrade_visual()
 
 
 func _find_visual() -> Node:
@@ -54,6 +56,18 @@ func _find_visual() -> Node:
 		if child is ColorRect or child is Sprite2D or child is AnimatedSprite2D:
 			return child
 	return null
+
+
+func _upgrade_visual() -> void:
+	## Replace the placeholder ColorRect with a proper visual from VisualFactory.
+	var new_visual: Node2D = VisualFactory.create_freddy_visual()
+	if new_visual:
+		# Remove old ColorRect placeholder
+		var old_visual := _find_visual()
+		if old_visual and old_visual is ColorRect:
+			old_visual.queue_free()
+		add_child(new_visual)
+		_sprite = new_visual
 
 
 func _physics_process(delta: float) -> void:

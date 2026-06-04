@@ -61,11 +61,17 @@ func play_sfx(clip_name: String) -> void:
 		push_warning("AudioManager: Unknown SFX clip '%s'" % clip_name)
 		return
 
-	var path: String = SFX_CLIPS[clip_name]
-	var stream: AudioStream = load(path) if ResourceLoader.exists(path) else null
+	# Try loading from AssetLoader first (real assets)
+	var stream: AudioStream = AssetLoader.load_sfx(clip_name)
+
+	# Fall back to built-in path
 	if stream == null:
-		# Silently skip missing audio files (placeholder phase)
-		return
+		var path: String = SFX_CLIPS[clip_name]
+		if ResourceLoader.exists(path):
+			stream = load(path)
+
+	if stream == null:
+		return  # Silent fallback — no audio available
 
 	var player: AudioStreamPlayer = _sfx_pool[_sfx_pool_index]
 	_sfx_pool_index = (_sfx_pool_index + 1) % SFX_POOL_SIZE
@@ -78,14 +84,16 @@ func play_music(track_key: String) -> void:
 	if track_key == _current_music_key:
 		return
 
-	if not MUSIC_TRACKS.has(track_key):
-		push_warning("AudioManager: Unknown music track '%s'" % track_key)
-		return
+	# Try loading from AssetLoader first (real assets)
+	var stream: AudioStream = AssetLoader.load_music(track_key)
 
-	var path: String = MUSIC_TRACKS[track_key]
-	var stream: AudioStream = load(path) if ResourceLoader.exists(path) else null
+	# Fall back to built-in path
+	if stream == null and MUSIC_TRACKS.has(track_key):
+		var path: String = MUSIC_TRACKS[track_key]
+		if ResourceLoader.exists(path):
+			stream = load(path)
+
 	if stream == null:
-		# Silently skip missing music files (placeholder phase)
 		stop_music()
 		return
 

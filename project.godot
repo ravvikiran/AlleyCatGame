@@ -25,6 +25,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 SaveManager="*res://scripts/autoloads/save_manager.gd"
+AssetLoader="*res://scripts/autoloads/asset_loader.gd"
+VisualFactory="*res://scripts/autoloads/visual_factory.gd"
 PlaceholderAssets="*res://scripts/autoloads/placeholder_assets.gd"
 GameManager="*res://scripts/autoloads/game_manager.gd"
 DifficultyManager="*res://scripts/autoloads/difficulty_manager.gd"

@@ -37,7 +37,8 @@ var current_tier: DifficultyTier = DifficultyTier.KITTEN
 
 func advance_tier() -> void:
 	if current_tier < DifficultyTier.ALLEY_CAT:
-		current_tier = (current_tier + 1) as DifficultyTier
+		@warning_ignore("int_as_enum_without_cast")
+		current_tier = current_tier + 1
 		difficulty_changed.emit(current_tier)
 
 

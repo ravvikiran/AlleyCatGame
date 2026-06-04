@@ -36,11 +36,8 @@ func _spawn_dog() -> void:
 	var dog := CharacterBody2D.new()
 	dog.name = "Dog"
 
-	# Visual placeholder
-	var visual := ColorRect.new()
-	visual.color = Color(0.8, 0.4, 0.1, 1)
-	visual.size = Vector2(60, 40)
-	visual.position = Vector2(-30, -20)
+	# Visual from VisualFactory (loads real sprite or draws procedural dog)
+	var visual: Node2D = VisualFactory.create_entity_visual("dog", Color(0.8, 0.4, 0.1), Vector2(60, 40))
 	dog.add_child(visual)
 
 	var collision := CollisionShape2D.new()

@@ -108,11 +108,8 @@ func _create_magic_broom() -> Node2D:
 	broom.set_meta("speed", 180.0 * DifficultyManager.get_param("broom_speed"))
 	broom.set_meta("push_force", Vector2(400, -200))
 
-	# Visual
-	var visual := ColorRect.new()
-	visual.color = Color(0.6, 0.4, 0.2, 1)
-	visual.size = Vector2(20, 70)
-	visual.position = Vector2(-10, -35)
+	# Visual from VisualFactory
+	var visual: Node2D = VisualFactory.create_entity_visual("magic_broom", Color(0.6, 0.4, 0.2), Vector2(20, 70))
 	broom.add_child(visual)
 
 	var collision := CollisionShape2D.new()
@@ -186,11 +183,8 @@ func _create_running_dog() -> CharacterBody2D:
 	var dog := CharacterBody2D.new()
 	dog.name = "RunningDog"
 
-	# Visual
-	var visual := ColorRect.new()
-	visual.color = Color(0.8, 0.4, 0.1, 1)
-	visual.size = Vector2(50, 30)
-	visual.position = Vector2(-25, -15)
+	# Visual from VisualFactory
+	var visual: Node2D = VisualFactory.create_entity_visual("running_dog", Color(0.8, 0.4, 0.1), Vector2(50, 30))
 	dog.add_child(visual)
 
 	var collision := CollisionShape2D.new()
