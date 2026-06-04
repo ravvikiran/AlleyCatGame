@@ -93,15 +93,11 @@ func _physics_process(delta: float) -> void:
 			if _sprite:
 				_sprite.modulate.a = 0.5 if fmod(_invuln_timer, 0.2) < 0.1 else 1.0
 
-	# Update facing
+	# Update facing direction (visual only - no scale flip for ColorRect)
 	if input_direction.x > 0:
 		facing_right = true
-		if _sprite and _sprite is Node2D:
-			_sprite.scale.x = abs(_sprite.scale.x)
 	elif input_direction.x < 0:
 		facing_right = false
-		if _sprite and _sprite is Node2D:
-			_sprite.scale.x = -abs(_sprite.scale.x)
 
 
 func _state_idle(delta: float) -> void:

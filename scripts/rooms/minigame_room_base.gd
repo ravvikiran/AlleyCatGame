@@ -108,6 +108,13 @@ func _create_magic_broom() -> Node2D:
 	broom.set_meta("speed", 180.0 * DifficultyManager.get_param("broom_speed"))
 	broom.set_meta("push_force", Vector2(400, -200))
 
+	# Visual
+	var visual := ColorRect.new()
+	visual.color = Color(0.6, 0.4, 0.2, 1)
+	visual.size = Vector2(20, 70)
+	visual.position = Vector2(-10, -35)
+	broom.add_child(visual)
+
 	var collision := CollisionShape2D.new()
 	var shape := RectangleShape2D.new()
 	shape.size = Vector2(30, 80)
@@ -116,6 +123,7 @@ func _create_magic_broom() -> Node2D:
 
 	var hitbox := Area2D.new()
 	hitbox.name = "Hitbox"
+	hitbox.monitoring = true
 	var hb_col := CollisionShape2D.new()
 	hb_col.shape = shape.duplicate()
 	hitbox.add_child(hb_col)
@@ -178,6 +186,13 @@ func _create_running_dog() -> CharacterBody2D:
 	var dog := CharacterBody2D.new()
 	dog.name = "RunningDog"
 
+	# Visual
+	var visual := ColorRect.new()
+	visual.color = Color(0.8, 0.4, 0.1, 1)
+	visual.size = Vector2(50, 30)
+	visual.position = Vector2(-25, -15)
+	dog.add_child(visual)
+
 	var collision := CollisionShape2D.new()
 	var shape := RectangleShape2D.new()
 	shape.size = Vector2(60, 40)
@@ -186,6 +201,7 @@ func _create_running_dog() -> CharacterBody2D:
 
 	var hitbox := Area2D.new()
 	hitbox.name = "Hitbox"
+	hitbox.monitoring = true
 	var hb_col := CollisionShape2D.new()
 	hb_col.shape = shape.duplicate()
 	hitbox.add_child(hb_col)

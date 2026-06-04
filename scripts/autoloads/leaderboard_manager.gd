@@ -210,7 +210,7 @@ func _android_share(text: String) -> void:
 	else:
 		# Fallback: try to open a mailto link
 		var encoded_text: String = text.uri_encode()
-		var mailto: String = "mailto:?subject=My%%20Alley%%20Cat%%20Score&body=%s" % encoded_text
+		var mailto: String = "mailto:?subject=My%%20Midnight%%20Prowl%%20Score&body=%s" % encoded_text
 		OS.shell_open(mailto)
 
 

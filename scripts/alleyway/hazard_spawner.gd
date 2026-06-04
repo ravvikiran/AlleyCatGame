@@ -35,9 +35,13 @@ func _spawn_dog() -> void:
 	# Create dog entity
 	var dog := CharacterBody2D.new()
 	dog.name = "Dog"
-	var sprite := Sprite2D.new()
-	sprite.name = "Sprite"
-	dog.add_child(sprite)
+
+	# Visual placeholder
+	var visual := ColorRect.new()
+	visual.color = Color(0.8, 0.4, 0.1, 1)
+	visual.size = Vector2(60, 40)
+	visual.position = Vector2(-30, -20)
+	dog.add_child(visual)
 
 	var collision := CollisionShape2D.new()
 	var shape := RectangleShape2D.new()
@@ -48,6 +52,7 @@ func _spawn_dog() -> void:
 	# Hitbox area for detecting Freddy
 	var hitbox := Area2D.new()
 	hitbox.name = "Hitbox"
+	hitbox.monitoring = true
 	var hitbox_collision := CollisionShape2D.new()
 	hitbox_collision.shape = shape.duplicate()
 	hitbox.add_child(hitbox_collision)
@@ -105,13 +110,13 @@ func _spawn_enemy_cat_popup() -> void:
 		return
 
 	var can: Node2D = trash_cans.pick_random()
-	# TODO: Animate cat popping out
 	# Check if Freddy is standing on this can
-	var player: Freddy = get_tree().get_first_node_in_group("player") as Freddy
-	if player and player.position.distance_to(can.position + Vector2(0, -40)) < 50:
-		# Knock Freddy off
-		player.velocity = Vector2(100, -200)
-		player.state_machine.transition_to("fall")
+	var player := get_tree().get_first_node_in_group("player")
+	if player and player is Freddy:
+		if player.position.distance_to(can.position + Vector2(0, -40)) < 50:
+			# Knock Freddy off
+			player.velocity = Vector2(100, -200)
+			player.current_state = Freddy.PlayerState.FALL
 
 
 # --- Thrown Objects ---
@@ -119,12 +124,20 @@ func _spawn_enemy_cat_popup() -> void:
 var _thrown_objects: Array = []
 
 
-func spawn_thrown_object(position: Vector2, type: String) -> void:
+func spawn_thrown_object(pos: Vector2, type: String) -> void:
 	var obj := Area2D.new()
 	obj.name = "ThrownObject_%s" % type
-	obj.position = position
+	obj.position = pos
 	obj.set_meta("type", type)
 	obj.set_meta("velocity_y", 0.0)
+	obj.monitoring = true
+
+	# Visual
+	var visual := ColorRect.new()
+	visual.color = Color(0.6, 0.3, 0.1, 1)
+	visual.size = Vector2(25, 25)
+	visual.position = Vector2(-12, -12)
+	obj.add_child(visual)
 
 	var collision := CollisionShape2D.new()
 	var shape := RectangleShape2D.new()

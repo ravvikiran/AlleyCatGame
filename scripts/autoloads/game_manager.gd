@@ -114,6 +114,8 @@ func reset_game() -> void:
 	felicia_window_active = false
 	DifficultyManager.reset()
 	ScoreManager.reset()
+	SaveManager.increment_games_played()
+	SaveManager.reset_session_flags()
 	lives_changed.emit(lives)
 
 

@@ -16,6 +16,7 @@ const DEFAULT_DATA: Dictionary = {
 }
 
 var _cached_data: Dictionary = {}
+var _games_played_incremented: bool = false
 
 
 func _ready() -> void:
@@ -24,9 +25,10 @@ func _ready() -> void:
 
 func save() -> void:
 	# Update cached data with current game state
-	_cached_data["high_score"] = ScoreManager.get_high_score()
-	_cached_data["highest_difficulty"] = int(DifficultyManager.current_tier)
-	_cached_data["total_games_played"] = _cached_data.get("total_games_played", 0) + 1
+	if ScoreManager:
+		_cached_data["high_score"] = ScoreManager.get_high_score()
+	if DifficultyManager:
+		_cached_data["highest_difficulty"] = int(DifficultyManager.current_tier)
 
 	var json_string: String = JSON.stringify(_cached_data, "\t")
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -35,6 +37,17 @@ func save() -> void:
 		file.close()
 	else:
 		push_error("SaveManager: Failed to open save file for writing.")
+
+
+func increment_games_played() -> void:
+	## Call this once when a new game session starts.
+	if not _games_played_incremented:
+		_cached_data["total_games_played"] = _cached_data.get("total_games_played", 0) + 1
+		_games_played_incremented = true
+
+
+func reset_session_flags() -> void:
+	_games_played_incremented = false
 
 
 func load_data() -> Dictionary:
@@ -68,7 +81,8 @@ func load_data() -> Dictionary:
 
 func get_setting(key: String) -> Variant:
 	var settings: Dictionary = _cached_data.get("settings", {})
-	return settings.get(key, DEFAULT_DATA["settings"].get(key))
+	var default_settings: Dictionary = DEFAULT_DATA.get("settings", {})
+	return settings.get(key, default_settings.get(key, false))
 
 
 func set_setting(key: String, value: Variant) -> void:

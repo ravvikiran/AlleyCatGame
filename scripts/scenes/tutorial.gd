@@ -301,8 +301,10 @@ func _complete_tutorial() -> void:
 func _show_success(message: String) -> void:
 	if _action_label:
 		_action_label.text = "✓ %s" % message
-	# Brief pause before advancing
+	# Use a flag to prevent double-advance during the delay
+	set_process(false)
 	await get_tree().create_timer(0.8).timeout
+	set_process(true)
 
 
 func _update_highlight(step: TutorialStep) -> void:

@@ -61,30 +61,47 @@ func _calculate_regions() -> void:
 
 
 func _setup_visuals() -> void:
-	# Create joystick visual
+	# Create joystick visual using runtime-generated textures
 	var joy_base := get_node_or_null("VirtualJoystick/Base")
 	if joy_base and joy_base is TextureRect:
-		var tex := PlaceholderAssets.create_circle_texture(int(JOYSTICK_MAX_RADIUS), Color(0.3, 0.3, 0.3, 0.4))
-		joy_base.texture = tex
+		var img := Image.create(160, 160, false, Image.FORMAT_RGBA8)
+		img.fill(Color(0.3, 0.3, 0.3, 0.4))
+		joy_base.texture = ImageTexture.create_from_image(img)
 
 	var joy_knob := get_node_or_null("VirtualJoystick/Base/Knob")
 	if joy_knob and joy_knob is TextureRect:
-		var tex := PlaceholderAssets.create_circle_texture(int(JOYSTICK_DEAD_ZONE + 10), Color(0.6, 0.6, 0.6, 0.6))
-		joy_knob.texture = tex
+		var img := Image.create(60, 60, false, Image.FORMAT_RGBA8)
+		img.fill(Color(0.6, 0.6, 0.6, 0.6))
+		joy_knob.texture = ImageTexture.create_from_image(img)
 
 	# Create button visuals
 	var jump_btn := get_node_or_null("JumpButton")
-	if jump_btn:
+	if jump_btn and jump_btn.get_child_count() == 0:
 		var btn_rect := ColorRect.new()
 		btn_rect.color = Color(0.0, 0.6, 0.8, 0.4)
+		btn_rect.custom_minimum_size = Vector2(120, 120)
 		btn_rect.size = Vector2(120, 120)
-		btn_rect.position = Vector2(-60, -60)
 		jump_btn.add_child(btn_rect)
 		var lbl := Label.new()
 		lbl.text = "JUMP"
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		lbl.position = Vector2(-30, -10)
+		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		lbl.size = Vector2(120, 120)
 		jump_btn.add_child(lbl)
+
+	var action_btn := get_node_or_null("ActionButton")
+	if action_btn and action_btn.get_child_count() == 0:
+		var btn_rect := ColorRect.new()
+		btn_rect.color = Color(0.8, 0.5, 0.0, 0.4)
+		btn_rect.custom_minimum_size = Vector2(100, 100)
+		btn_rect.size = Vector2(100, 100)
+		action_btn.add_child(btn_rect)
+		var lbl := Label.new()
+		lbl.text = "ACT"
+		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+		lbl.size = Vector2(100, 100)
+		action_btn.add_child(lbl)
 
 
 func _input(event: InputEvent) -> void:

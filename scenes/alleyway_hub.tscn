@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://alleyway_hub"]
+[gd_scene load_steps=12 format=3 uid="uid://alleyway_hub"]
 
 [ext_resource type="Script" path="res://scripts/alleyway/alleyway_hub.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/alleyway/window_manager.gd" id="2"]
