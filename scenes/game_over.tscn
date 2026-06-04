@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://game_over"]
+[gd_scene load_steps=5 format=3]
 
-[ext_resource type="Script" path="res://scripts/scenes/game_over.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/scenes/game_over.gd" id="1_gameover"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_big"]
 font_size = 72
@@ -23,13 +23,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1")
+script = ExtResource("1_gameover")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.06, 0.0, 0.0, 1)
 
 [node name="GameOverLabel" type="Label" parent="."]
@@ -41,6 +43,7 @@ offset_left = -400.0
 offset_top = 100.0
 offset_right = 400.0
 offset_bottom = 220.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "GAME OVER"
@@ -55,6 +58,7 @@ offset_left = -300.0
 offset_top = 260.0
 offset_right = 300.0
 offset_bottom = 310.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "SCORE: 0"
@@ -69,6 +73,7 @@ offset_left = -300.0
 offset_top = 320.0
 offset_right = 300.0
 offset_bottom = 370.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "HIGH SCORE: 0"
@@ -83,6 +88,7 @@ offset_left = -300.0
 offset_top = 380.0
 offset_right = 300.0
 offset_bottom = 430.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "★ NEW HIGH SCORE! ★"
@@ -98,6 +104,7 @@ offset_left = -300.0
 offset_top = 440.0
 offset_right = 300.0
 offset_bottom = 480.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "Leaderboard Rank: #1"
@@ -112,6 +119,7 @@ offset_left = -220.0
 offset_top = 540.0
 offset_right = -20.0
 offset_bottom = 590.0
+grow_horizontal = 2
 text = "📤 SHARE SCORE"
 
 [node name="LeaderboardButton" type="Button" parent="."]
@@ -123,6 +131,7 @@ offset_left = 20.0
 offset_top = 540.0
 offset_right = 220.0
 offset_bottom = 590.0
+grow_horizontal = 2
 text = "🏆 LEADERBOARD"
 
 [node name="RestartLabel" type="Label" parent="."]
@@ -134,6 +143,7 @@ offset_left = -300.0
 offset_top = 700.0
 offset_right = 300.0
 offset_bottom = 750.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "TAP TO RESTART"

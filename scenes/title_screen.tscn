@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://title_screen"]
+[gd_scene load_steps=4 format=3]
 
-[ext_resource type="Script" path="res://scripts/scenes/title_screen.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/scenes/title_screen.gd" id="1_title"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_title"]
 font_size = 96
@@ -19,13 +19,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1")
+script = ExtResource("1_title")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.02, 0.02, 0.08, 1)
 
 [node name="TitleLabel" type="Label" parent="."]
@@ -37,6 +39,7 @@ offset_left = -400.0
 offset_top = 100.0
 offset_right = 400.0
 offset_bottom = 240.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "MIDNIGHT PROWL"
@@ -51,6 +54,7 @@ offset_left = -300.0
 offset_top = 240.0
 offset_right = 300.0
 offset_bottom = 280.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "A stray cat's quest for love"
@@ -65,6 +69,7 @@ offset_left = -35.0
 offset_top = 310.0
 offset_right = 35.0
 offset_bottom = 400.0
+grow_horizontal = 2
 color = Color(0, 1, 1, 1)
 
 [node name="PlayerLabel" type="Label" parent="."]
@@ -76,6 +81,7 @@ offset_left = -300.0
 offset_top = 430.0
 offset_right = 300.0
 offset_bottom = 470.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "Player: Guest"
@@ -90,6 +96,7 @@ offset_left = -300.0
 offset_top = 490.0
 offset_right = 300.0
 offset_bottom = 530.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "HIGH SCORE: 0"
@@ -104,6 +111,7 @@ offset_left = -300.0
 offset_top = 540.0
 offset_right = 300.0
 offset_bottom = 580.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "Difficulty: Kitten"
@@ -118,6 +126,7 @@ offset_left = -300.0
 offset_top = 660.0
 offset_right = 300.0
 offset_bottom = 710.0
+grow_horizontal = 2
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "TAP TO START"
@@ -132,6 +141,7 @@ offset_left = -220.0
 offset_top = 760.0
 offset_right = -20.0
 offset_bottom = 810.0
+grow_horizontal = 2
 text = "🏆 LEADERBOARD"
 
 [node name="TutorialButton" type="Button" parent="."]
@@ -143,6 +153,7 @@ offset_left = 20.0
 offset_top = 760.0
 offset_right = 220.0
 offset_bottom = 810.0
+grow_horizontal = 2
 text = "📖 HOW TO PLAY"
 
 [node name="CreditsLabel" type="Label" parent="."]
@@ -156,6 +167,8 @@ offset_left = -400.0
 offset_top = -50.0
 offset_right = 400.0
 offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 text = "Inspired by classic 80s platformers"
