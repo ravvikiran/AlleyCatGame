@@ -30,7 +30,6 @@ func _draw() -> void:
 	draw_circle(head_center, head_radius, color)
 
 	# Ears (triangles)
-	var ear_size := head_radius * 0.6
 	# Left ear
 	draw_polygon(PackedVector2Array([
 		head_center + Vector2(-head_radius * 0.6, -head_radius * 0.3),

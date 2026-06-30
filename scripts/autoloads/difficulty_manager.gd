@@ -45,7 +45,8 @@ func advance_tier() -> void:
 func get_param(key: String) -> float:
 	if PARAMS.has(key):
 		var values: Array = PARAMS[key]
-		return float(values[current_tier])
+		var idx: int = mini(int(current_tier), values.size() - 1)
+		return float(values[idx])
 	push_warning("DifficultyManager: Unknown param key '%s'" % key)
 	return 1.0
 
@@ -53,7 +54,8 @@ func get_param(key: String) -> float:
 func get_param_int(key: String) -> int:
 	if PARAMS.has(key):
 		var values: Array = PARAMS[key]
-		return int(values[current_tier])
+		var idx: int = mini(int(current_tier), values.size() - 1)
+		return int(values[idx])
 	push_warning("DifficultyManager: Unknown param key '%s'" % key)
 	return 1
 

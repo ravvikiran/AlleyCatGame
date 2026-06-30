@@ -22,6 +22,7 @@ var _player_row: int = 0
 var _has_gift: bool = true
 var _gift_position: Vector2 = Vector2.ZERO
 var _gift_dropped: bool = false
+var _gift_delivered: bool = false
 var _cupid_timer: float = 0.0
 var _is_complete: bool = false
 
@@ -143,11 +144,12 @@ func _update_cupids(delta: float) -> void:
 
 
 func _shoot_arrow() -> void:
-	# Shoot from left or right edge
+	# Shoot from left or right edge, moving diagonally downward
 	var from_left: bool = randf() > 0.5
 	var start_x: float = 50.0 if from_left else 1870.0
-	var start_y: float = randf_range(200, 700)
-	var angle: float = -PI / 4.0 if from_left else -3.0 * PI / 4.0  # 45 degrees diagonal
+	var start_y: float = randf_range(100, 400)
+	# Arrows travel diagonally downward
+	var angle: float = PI / 4.0 if from_left else 3.0 * PI / 4.0
 
 	var arrow: Dictionary = {
 		"position": Vector2(start_x, start_y),
@@ -204,10 +206,11 @@ func _update_gift(delta: float) -> void:
 			continue
 
 		if _gift_position.distance_to(cat["position"]) < 50.0:
-			# Eliminate both
+			# Eliminate both — gift delivered successfully
 			cat["active"] = false
 			cat["eliminated_timer"] = GIFT_ELIMINATE_DURATION
 			_gift_dropped = false
+			_gift_delivered = true
 			_gift_position = Vector2.ZERO
 			return
 
@@ -260,8 +263,9 @@ func _check_felicia() -> void:
 func _complete_love_game() -> void:
 	_is_complete = true
 
-	# Apply multiplier if gift was delivered
-	ScoreManager.set_love_multiplier(not _gift_dropped and _has_gift)
+	# Apply multiplier: doubled if gift was delivered OR still held
+	var deserves_multiplier: bool = _gift_delivered or _has_gift
+	ScoreManager.set_love_multiplier(deserves_multiplier)
 	ScoreManager.award_points(ScoreManager.ScoreEvent.LOVE_GAME_COMPLETE)
 
 	# Award extra life and advance difficulty

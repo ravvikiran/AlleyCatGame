@@ -23,7 +23,7 @@ var _paw_prints: Array[Vector2] = []
 
 
 func _ready() -> void:
-	_player = $Freddy
+	_player = get_node_or_null("Freddy") as Freddy
 	_setup_player()
 	_setup_broom()
 	_setup_dog()
@@ -37,11 +37,13 @@ func _process(delta: float) -> void:
 
 
 func _setup_player() -> void:
-	if _player:
-		_player.died.connect(_on_player_death)
-		# Connect touch controller
-		var touch: CanvasLayer = $UILayer/TouchController
-		if touch:
+	if not _player:
+		push_warning("MinigameRoomBase: No Freddy node found in scene.")
+		return
+	_player.died.connect(_on_player_death)
+	# Connect touch controller
+	var touch: CanvasLayer = get_node_or_null("UILayer/TouchController")
+	if touch:
 			touch.move_input.connect(func(dir): _player.input_direction = dir)
 			touch.jump_pressed.connect(func(): 
 				_player.is_jump_pressed = true

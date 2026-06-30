@@ -78,6 +78,10 @@ func _move_mouse(mouse_index: int) -> void:
 		return
 
 	var current_hole: int = _mouse_positions[mouse_index]
+	# Skip caught mice
+	if current_hole < 0:
+		return
+
 	var connections: Array = CONNECTION_MAP[current_hole]
 
 	# Pick a random connected hole
@@ -109,7 +113,7 @@ func _on_action_pressed() -> void:
 
 	# Move player to hole position
 	_player.position = _get_hole_world_position(target_hole)
-	_player.state_machine.transition_to("action", {"type": "teleport", "duration": 0.1})
+	_player.start_action(0.1)
 
 	# Check for catches at new position
 	for i in range(_mouse_positions.size()):
@@ -120,12 +124,16 @@ func _check_catch(mouse_index: int) -> void:
 	if mouse_index >= _mouse_positions.size():
 		return
 
+	if _mouse_positions[mouse_index] < 0:
+		return  # Already caught
+
 	if _freddy_hole >= 0 and _mouse_positions[mouse_index] == _freddy_hole:
 		# Caught a mouse!
 		AudioManager.play_sfx("catch_mouse")
 		ScoreManager.award_points(ScoreManager.ScoreEvent.MOUSE_CATCH)
 		_mouse_positions[mouse_index] = -1  # Mark as caught
 		_mouse_timers[mouse_index].stop()
+		_mouse_timers[mouse_index].queue_free()
 		on_objective_completed()
 
 

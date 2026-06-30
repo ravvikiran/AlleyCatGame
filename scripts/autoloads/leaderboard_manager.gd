@@ -121,12 +121,7 @@ func share_score(score: int, rank: int) -> void:
 	var share_text: String = _build_share_text(score, rank)
 
 	if OS.has_feature("android"):
-		# Use Android share intent
-		var intent_args: Array = [
-			"--es", "android.intent.extra.TEXT", share_text,
-			"--es", "android.intent.extra.SUBJECT", "My Midnight Prowl Score!"
-		]
-		# Godot 4 Android share via JavaClass
+		# Use Android share intent via Godot plugin or mailto fallback
 		_android_share(share_text)
 	else:
 		# Desktop fallback: copy to clipboard

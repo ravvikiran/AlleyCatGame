@@ -44,9 +44,9 @@ var action_button_visible: bool = false:
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_calculate_regions()
-
-	# Setup visual indicators
 	_setup_visuals()
+	# Recalculate on viewport size change
+	get_viewport().size_changed.connect(_calculate_regions)
 
 
 func _calculate_regions() -> void:

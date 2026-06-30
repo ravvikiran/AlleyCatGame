@@ -74,7 +74,7 @@ func _on_action_pressed() -> void:
 	_is_drinking = true
 	_drink_timer = 0.0
 	_current_bowl = nearest_bowl
-	_player.state_machine.transition_to("action", {"type": "drink", "duration": DRINK_DURATION})
+	_player.start_action(DRINK_DURATION)
 
 
 func _process(delta: float) -> void:
@@ -99,6 +99,9 @@ func _complete_drink() -> void:
 
 
 func _update_awake_meters(delta: float) -> void:
+	if not _player:
+		return
+
 	for dog in _sleeping_dogs:
 		if dog["state"] == "attacking":
 			continue

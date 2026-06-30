@@ -55,7 +55,7 @@ func _enter_underwater() -> void:
 	AudioManager.play_sfx("splash")
 
 	# Switch player to swim state
-	_player.state_machine.transition_to("swim")
+	_player.enter_swim_mode()
 
 	# Spawn fish
 	_spawn_fish()
