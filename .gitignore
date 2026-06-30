@@ -1,17 +1,44 @@
-# Godot 4 specific ignores
+# Godot 4.x generated files
 .godot/
+
+# Godot import files (auto-regenerated on open)
 *.import
 
 # Android build artifacts
 android/build/
 *.apk
 *.aab
+*.keystore
+
+# Export output
+export/
 
 # OS generated files
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
-*.tmp
+desktop.ini
 
-# IDE
+# IDE / Editor files
 .vscode/
+.idea/
 *.swp
+*.swo
+*~
+*.code-workspace
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+
+# Python (if using any build scripts)
+__pycache__/
+*.pyc
+
+# User-specific Godot settings
+.godot/editor/
