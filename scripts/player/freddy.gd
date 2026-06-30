@@ -60,6 +60,8 @@ func _find_visual() -> Node:
 
 func _upgrade_visual() -> void:
 	## Replace the placeholder ColorRect with a proper visual from VisualFactory.
+	if not is_instance_valid(VisualFactory):
+		return
 	var new_visual: Node2D = VisualFactory.create_freddy_visual()
 	if new_visual:
 		# Remove old ColorRect placeholder
